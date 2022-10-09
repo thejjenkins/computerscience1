@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int var1;
+	char var2;
+	float var3;
+	float var4;
+
+	var1 = 30;
+	var2 = 'J';
+	var3 = 4.5;
+
+	var4 = var3 + var2 % var1;
+
+	cout << "var4 = " << var4 << endl;
+
+	return 0;
+}
