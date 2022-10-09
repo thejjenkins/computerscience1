@@ -1,0 +1,46 @@
+/*
+ * Author: James Jenkins (jamesjenkins2@my.unt.edu)
+ * Date: 10 October 2021
+ * Instructor: Dr. Pradhumna Shrestha
+ * Description: This program allows the user to enter the height in inches of 12 people and then, find the average height, and then display which people are above the average height.
+*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	const int SIZE = 12; //12 people
+	int sum_height = 0; // variable for sum of heights
+	int height[SIZE]; // array to store height of 12 people
+	int above_average[SIZE]; // store all above average heights in this array
+	double average; // variable for average of heights
+
+	for(int i = 0; i<SIZE; ++i)
+	{
+		cout << "Enter height in inches of person #" << i+1 << ": "; cin>>height[i]; // read heights, one person at a time
+		sum_height+=height[i]; // sum all heights
+	}
+	average = sum_height/SIZE; // find the average of all heights
+	for (int i = 0; i<SIZE; ++i)
+	{
+		int temp = height[i]; // temporarily store height[i] so it does not get lost. Done inside loop.
+		if (temp>average) // comparing the temp to average
+		{
+			cout << "Person #" << i+1 << " is above the average height of " << average << " inches." << endl;
+			above_average[i] = temp; // store temp (height[i]) in above_average[i];
+		}
+	}
+	for (int i = 0; i<SIZE; ++i)
+	{
+		if(above_average[i]==height[i]) // couting all elements in above_average will yield numbers stored in computer memory instead of the above average values that I want
+		{
+			cout << above_average[i] << '\t';
+		}
+	}
+	cout << endl;
+	cout << "Average height of all persons is: " << average << " inches." << endl;
+	cout << endl;
+
+	return 0;
+}
