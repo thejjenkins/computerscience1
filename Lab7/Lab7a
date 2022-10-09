@@ -1,0 +1,42 @@
+/* Author: James Jenkins (jamesjenkins2@my.unt.edu)
+Date: 19 October 2021
+Instructor: Dr. Pradhumna Shrestha
+Description: This program declares c-strings and uses the strcpy, strlen, cin.getline, and strcmp functions from the <cstring> library.
+C-strings must be declared with character arrays and they do not work the same way as strings in C++. This program illustrates how to work with c-strings.
+*/
+#include <iostream>
+#include <cstring> // This library is required to work with c-strings. It contains all functions necessary to copy, concatenate, compare, get size, and receive inputs into c-strings (which are just character arrays).
+using namespace std;
+
+int main()
+{
+    char str1[30], str2[30]; // declaring c-strings is to declare a character array of size length+1. The extra space MUST BE KEPT FOR THE NULL CHARACTER '\0'. BAD THINGS WILL HAPPEN IF THIS CHARACTER IS NOT ACCOUNTED FOR.
+    char str3[21]="This is programming.";
+
+    strcpy(str1, str3); // The c-string function copies str3 into str1. Syntax is strcpy(destination, source).
+
+    cout << "Please enter a string: "; cin.getline(str2, 29); // cin.getline(destination, number of characters) is required to get all characters including spaces. cin will stop at the first space.
+    int length1 = strlen(str1); // The length of the strings is an int and must be stored in an int variable.
+    int length2 = strlen(str2);
+
+    if (length1 == length2) // comparing the int lengths of the strings instead of the strings themselves.
+    {
+        cout << "They are the same length." << endl;
+        int compare = strcmp(str1, str2); // strcmp(str1, str2) returns a negative number if str1 is less than str2, returns 0 if they are identical, and returns a positive number > 0 if str1 is greater than str2. The comparison is an integer, so it must be stored in an int variable.
+        if (compare == 0) // compare is an int variable
+        {
+            cout << "The strings are the same." << endl;
+            // This branch only executes if the lengths are the same.
+        }
+        else
+        {
+            cout << "The strings are not the same." << endl;
+        }
+    }
+    else 
+    {
+        cout << "They are not the same length." << endl;
+        return 0; // return 0 is an indication to the compiler that the program should end immediately.
+    }
+    return 0;
+}
