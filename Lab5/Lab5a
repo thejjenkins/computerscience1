@@ -1,0 +1,35 @@
+/* Author: James Jenkins (jamesjenkins2@my.unt.edu)
+ * Date: September 28, 2021
+ * Instructor: Dr. Pradhumna Shrestha
+ * Description: This program will find the sum of all numbers between any two seeded randomly generated numbers, inclusively, where the randomly generated numbers are also included in the sum. */
+
+#include <iostream>
+#include <ctime> // This library is necessary for using the random number generator based on the time
+using namespace std;
+
+int main ()
+{
+	srand(time(NULL)); // This is the syntax that changes the random number to a true random number based on 
+			   // the time
+	int randomNum1= (rand()%11)+10; // %11 gives the range of numbers and +10 indicates the first number
+	int randomNum2= (rand()%11)+20;
+	int sum=0; // This variable must be initialized in order to display the sum of the random numbers
+
+	cout << "Random number 1 is: " << randomNum1 << endl;
+	cout << "Random number 2 is: " << randomNum2 << endl;
+
+	while (randomNum1 <= randomNum2) // randomNum1 will be incremented during the while loop, so this condition
+					 // ensures that the loop will stop when the first number is equal to the
+					 // second
+	{
+		sum = sum + randomNum1; // The sum is inclusive of random number 1
+		++randomNum1;		// This increments randomNum1. The while loop will stop when
+					// randomNum1 == randomNum2
+	}
+	cout << "The sum of all numbers between random number 1 and 2, including random numbers 1 and 2, is: " << sum << endl;
+
+
+
+
+	return 0;
+}
