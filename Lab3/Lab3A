@@ -1,0 +1,43 @@
+/* Author: James Jenkins
+ * Date: 14 September 2021
+ * Instructor: Dr. Pradhumna Shrestha
+ * Description: This program receives from the user two characters,
+ * two integers, and two decimal numbers and then displays them in 
+ * a printed statement. */
+
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+
+int main() {
+	char a, b; //declaring multiple variables of the same type by separating with a comma
+	int c, d;
+	double e, f;
+
+	printf("Please enter two characters separated by a space: ");
+	//printf is the equivalent of cout
+	scanf("%c %c", &a, &b); 
+	/*
+	scanf allows the user to input characters as opposed to the programmer 
+	establishing the variables.
+	syntax of scanf and printf require %i for int, %c for char, %f for float,
+	and %d for double. Scanf requires the "&" symbol before the variable
+	that will store the value the user types in.
+	*/
+	printf("Now, enter two integers separated by a space: ");
+	scanf("%i %i", &c, &d); 
+	printf("Last, please enter two decimal numbers separated by a space: ");
+	scanf("%lf %lf", &e, &f); 
+	/* %lf is used for decimal numbers. lf stands for long float. Float is the 
+	decimal type and long indicates that it can take up many decimals for 
+	a value such as pi. */
+	
+	printf("Your characters were %c and %c.\n", a, b);
+	printf("Your integers were %i and %i.\n", c, d);
+	printf("Your decimal numbers were %lf and %e.\n", e, f);
+	// Each printf statement was separated in order to prevent a super long
+	// and cluttered single printf statement.
+
+
+	return 0;
+}
