@@ -1,0 +1,34 @@
+/*
+Author: James Jenkins (jamesjenkins2@my.unt.edu)
+Date: 2 November 2021
+Instructor: Dr. Pradhumna Shrestha
+Description: This program reads numbers from a file and adds them. 
+*/
+
+#include <iostream> 
+#include <fstream> // library necessary to read from files and output to files.
+using namespace std;
+
+int main()
+{
+    ifstream fin; // ifstream is the data type and fin is the variable name. (Think: int x or double my_dbl)
+    int x, y, z; // int of each number on the line
+    int sum; // sum of the line
+
+    fin.open("data.dat"); // open the file named data.dat.txt
+    if (fin.fail()) // if there was a typo in the file name then the function fail() will return a bool variable true and the branch will execute.
+    {
+        cout << "Error opening file" << endl;
+        exit(1); // exit(1) ends the program immediately.
+    }
+
+    while (!fin.eof()) // the eof function returns a bool variable true if the end of the file is reached. The ! is the inverter (NOT) of the output, so as long as the end of file is not reached the loop will continue to iterate.
+    {
+        fin>>x>>y>>z;
+        sum=x+y+z;
+        cout << sum << endl;
+    }
+
+    fin.close(); // all files MUST be closed after using them. If the file remains open then it could prevent access in the future or cause some unforseen errors. Best practice is to close it everytime. 
+    return 0;
+}
