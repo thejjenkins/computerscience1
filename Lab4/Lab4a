@@ -1,0 +1,48 @@
+/*Author: James Jenkins (jamesjenkins2@my.unt.edu)
+ * Date: September 21, 2021
+ * Instructor: Dr. Pradhumna Shrestha
+ * Description: This program is a switch-case program. It is similar to an if-else block, but more than one case can be executed if the "break" is not included. */
+
+#include <iostream>
+#include <ctype.h>
+using namespace std;
+
+int main() 
+{
+	enum Season {Summer = 'S', Fall = 'F', Winter = 'W', Spring = 'G'};
+	/*
+	 Enumeration is a data type and the word Season holds all of the values given in the curly braces. 
+	 The values in the braces are considered to be 0, 1, 2, 3, ... unless given a specific value as I
+	 have done here. For example, if user enters 0 then Summer will be accessed. 1 will access Fall, etc.
+	 */
+	char userSeason; //This character is declared in order to access the data in enum. It is essentially a key.
+
+	cout << "Enter a letter that represents the current season: ";
+	cin >> userSeason; //User enters a letter. If the letter matches the data contained in enum Season then
+			   //the data can be used in the switch-case.
+	
+	userSeason = toupper(userSeason);
+	//This command changes lower case letters to upper case. It is useful incase the user forgets to capitalize their letters.
+
+	switch (userSeason) //semi-colon is not used in this line
+	{
+		case Summer: //note the use of a colon after each case
+			cout << "It is rather hot outside." << endl;
+			break; //if a break statement is not included then the switch will continue
+			       //to the next case
+		case Fall:
+			cout << "The weather looks good." << endl;
+			break;
+		case Winter:
+			cout << "It is rather cold outside." << endl;
+			break;
+		case Spring:
+			cout << "The flowers are blooming." << endl;
+			break;
+		default: //there is nothing else needed after default except a colon. There is no break either.
+			cout << "Wrong choice." << endl;
+	}
+
+
+	return 0;
+}
