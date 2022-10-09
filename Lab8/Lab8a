@@ -1,0 +1,54 @@
+/*
+Author: James Jenkins (jamesjenkins2@my.unt.edu)
+Date: 26 October 2021
+Instructor: Dr. Pradhumna Shrestha
+Description: This program accepts an integer from the user and then calls a function to compare the user entered integer to a randomly generated integer. The randomly generated integer is called from another function. The program is to demonstrate how to use a function to call another function. The function that is called inside the first function must be declared before the calling function.
+*/
+
+#include <iostream>
+#include <ctime> // This library is necessary to generate truly random numbers
+using namespace std;
+
+/*
+Function: getRandom
+Parameters: None
+Return: a random integer between 1 and 100, inclusive.
+Description: The function generates a random integer between 1 and 100, inclusive, to be used in the next function.
+*/
+int getRandom() // The order of function declaration is critically important. The innermost function must be declared first, followed by the second innermost, followed by the third, etc.
+{
+    srand(time(NULL)); // syntax necessary to declare a seeded random number
+    int randomnum = rand()%100+1; // mod 100 returns 0-99, but I want 1-100, so I add 1.
+    return randomnum; // This function is supposed to return this number to the compare function
+}
+
+/*
+Function: compare
+Parameters: an integer labeled guess
+Return: A cout statement
+Description: The function declares an integer named randomnum which is initialized by calling the function getRandom. Then the function does a cout statement telling what the random number is. Then an if-elseif-else block is used to compare whether the guess is larger, equal to, or smaller than the randomly generated number. Each if, elseif, and else statement come with a unique cout statement.
+*/
+void compare(int guess) // This function only has one parameter which is the user guess from main()
+{
+    int randomnum = getRandom(); // The getRandom function MUST be declared BEFORE the compare function otherwise this will yield a compiler error.
+    cout << "Random number: " << randomnum << endl; // Random number is displayed before the if-elseif-else block
+    if (guess>randomnum)
+    {
+        cout << "Your number is larger than the random number." << endl;
+    }
+    else if (guess == randomnum)
+    {
+        cout << "Your number is equal to the random number." << endl;
+    }
+    else
+    {
+        cout << "Your number is smaller than the random number." << endl;
+    }
+}
+int main()
+{
+    int guess; // guess is declared in main AND in compare because the scope of both functions is independent of each other.
+    cout << "Enter an integer: "; cin >> guess;
+    compare(guess); // cout statements are in the compare function, so this is all that is necessary to display results. 
+    return 0;
+}
